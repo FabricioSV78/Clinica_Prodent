@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodent</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/ver_citas_doctor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+
+</head>
+<body onload="showSchedule('Lun-schedule', document.querySelector('.days button:first-child'))">
+    <style>
+        .schedule {
+            display: none;
+        }
+        .days button.active {
+            background-color: #007BFF; /* Cambia el color de fondo para el botón activo */
+            color: white; /* Color de texto para el botón activo */
+        }
+    </style>
+   <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="Home_Doctor.html">Prodent</a>
+        </div>
+        <div class="navbar-right">
+            <a href="index.html">Cerrar Sesión</a>
+            <i class="fas fa-user-circle"></i>
+        </div>
+        
+    </nav>
+
+    <!-- CONTENIDO -->
+    <div class="content">
+        <h2>VER CITAS PENDIENTES</h2>
+        <div class="days">
+            <button onclick="showSchedule('Lun-schedule', this);">LUNES</button>
+            <button onclick="showSchedule('Mar-schedule', this);">MARTES</button>
+            <button onclick="showSchedule('Mie-schedule', this);">MIÉRCOLES</button>
+            <button onclick="showSchedule('Jue-schedule', this);">JUEVES</button>
+            <button onclick="showSchedule('Vie-schedule', this);">VIERNES</button>
+        </div>
+        <div id="Lun-schedule" class="schedule">
+            <div class="header">
+                <p>Hora</p>
+                <p>Paciente</p>
+            </div>
+            <!-- Puedes agregar más bloques de horario como este -->
+            <div class="time-block">
+                <p>7:00-8:00 AM</p>
+                <p>Juan Valdez</p>
+            </div>
+            <div class="time-block">
+                <p>11:00-12:00 PM</p>
+                <p>Victor Pretell</p>
+            </div>
+            <div class="time-block">
+                <p>4:00-5:00 PM</p>
+                <p>Felix Huamán</p>
+            </div>
+        </div>
+        <div id="Mar-schedule" class="schedule">
+            <div class="header">
+                <p>Hora</p>
+                <p>Paciente</p>
+            </div>
+            <!-- Puedes agregar más bloques de horario como este -->
+            <div class="time-block">
+                <p>7:00-8:00 AM</p>
+                <p>Pablo Cruzado</p>
+            </div>
+            <div class="time-block">
+                <p>8:00-9:00 AM</p>
+                <p>Edward Robles</p>
+            </div>
+            <div class="time-block">
+                <p>9:00-10:00 AM</p>
+                <p>Lionel Messi</p>
+            </div>
+            <div class="time-block">
+                <p>6:00-7:00 PM</p>
+                <p>Carlos Pena</p>
+            </div>
+        </div>
+        <div id="Mie-schedule" class="schedule">
+            <div class="header">
+                <p>Hora</p>
+                <p>Paciente</p>
+            </div>
+            <!-- Puedes agregar más bloques de horario como este -->
+            <div class="time-block">
+                <p>7:00-8:00 AM</p>
+                <p>Lucio Balboa</p>
+            </div>
+            <div class="time-block">
+                <p>11:00-12:00 PM</p>
+                <p>Julio Cortés</p>
+            </div>
+            <div class="time-block">
+                <p>9:00-10:00 AM</p>
+                <p>Pedro Cerna</p>
+            </div>
+            <div class="time-block">
+                <p>6:00-7:00 PM</p>
+                <p>Renzo Liebre</p>
+            </div>
+        </div>
+        <div id="Jue-schedule" class="schedule">
+            <div class="header">
+                <p>Hora</p>
+                <p>Paciente</p>
+            </div>
+            <!-- Puedes agregar más bloques de horario como este -->
+            <div class="time-block">
+                <p>7:00-8:00 AM</p>
+                <p>Raúl Caceda</p>
+            </div>
+            <div class="time-block">
+                <p>5:00-6:00 PM</p>
+                <p>Joel González</p>
+            </div>
+        </div>
+        <div id="Vie-schedule" class="schedule">
+            <div class="header">
+                <p>Hora</p>
+                <p>Paciente</p>
+            </div>
+            <!-- Puedes agregar más bloques de horario como este -->
+            <div class="time-block">
+                <p>9:00-10:00 AM</p>
+                <p>Raúl Caceda</p>
+            </div>
+            <div class="time-block">
+                <p>5:00-6:00 PM</p>
+                <p>Daniel Pereda</p>
+            </div>
+            <div class="time-block">
+                <p>6:00-7:00 PM</p>
+                <p>Luis Plasencia</p>
+            </div>
+        </div>
+        <div class="buttons">
+            <a href="Home_Doctor.html">Regresar</a>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h2>Prodent</h2>
+            <div class="social-icons">
+                <a href="#" class="facebook-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="instagram-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="tiktok-icon"><i class="fab fa-tiktok"></i></a>
+
+            </div>
+        </div>
+    </footer>
+    <script>
+        function showSchedule(scheduleId, selectedTab) {
+            // Oculta todos los horarios
+            var schedules = document.querySelectorAll('.schedule');
+            schedules.forEach(function(schedule) {
+                schedule.style.display = 'none';
+            });
+
+            // Muestra el horario correspondiente al botón clicado
+            var selectedSchedule = document.getElementById(scheduleId);
+            if (selectedSchedule) {
+                selectedSchedule.style.display = 'block';
+            }
+            
+            // Obtiene todos los botones dentro del contenedor con la clase 'days'
+            var tabs = document.querySelectorAll('.days button');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+
+            // Añade la clase 'active' al botón que fue clickeado
+            selectedTab.classList.add('active');
+        }
+        // Llama a showSchedule para el primer botón al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            showSchedule('Lun-schedule', document.querySelector('.days button:first-child'));
+        });
+    </script>
+</body>
+</html>
