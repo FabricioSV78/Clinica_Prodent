@@ -147,12 +147,6 @@ body{
 /* INICIO DE SESION */
 
 
-.registro_centrado{
-    position: relative;
-    align-items: center;
-}
-
-
 .login-container {
     background-color: #ffffff;
     padding: 40px;
