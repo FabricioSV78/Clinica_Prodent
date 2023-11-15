@@ -246,7 +246,7 @@
         </div>
         <div class="buttons">
             <a href="Home_Doctor.html">Regresar</a>
-            <button type="submit" onclick="actualizarAppointment()">Actualizar</button>
+            <button type="submit" onclick="validateAllSchedules()">Actualizar</button>
         </div>
     </div>
 
@@ -289,14 +289,29 @@
         document.addEventListener('DOMContentLoaded', function() {
             showSchedule('Lun-schedule', document.querySelector('.days button:first-child'));
         });
+    </script>
 
-        function actualizarAppointment() {
-            
-            alert('Horario actualizado exitosamente.');
+    <script>
+        function validateAllSchedules() {
+            const allSchedules = document.querySelectorAll('.schedule');
+            let isValid = true;
 
-            window.location.href = 'Home_Doctor.html';
-            // Asegúrate de que esta función solo se ejecute cuando el formulario sea válido
-            // Puedes añadir una verificación de validación del formulario aquí si es necesario
+            allSchedules.forEach(schedule => {
+                const checkboxes = schedule.querySelectorAll('input[type="checkbox"]');
+                const hasSelection = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+                if (!hasSelection) {
+                isValid = false;
+                // Puedes agregar más lógica aquí, como resaltar el día en rojo o mostrar un mensaje de error.
+                }
+            });
+
+            if (isValid) {
+                alert('Horario actualizado exitosamente.');
+                window.location.href = 'Home_Doctor.html';
+            } else {
+                alert('Por favor, selecciona al menos una hora en cada día.');
+            }
         }
     </script>
 </body>

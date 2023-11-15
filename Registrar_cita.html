@@ -29,7 +29,6 @@
         </div>
         <div class="navbar-right">
             <a href="index.html">Cerrar Sesión</a>
-            <!--<span>S/ 0.00</span>-->
             <i class="fas fa-user-circle"></i>
         </div>
         
@@ -37,7 +36,7 @@
 
     <!-- CONTENIDO -->
     <div class="content">
-        <h2>REGISTRAR CITA</h2>
+        <h2 id="TÍTULO">REGISTRAR CITA</h2>
         <div class="days">
             <button onclick="showSchedule('Lun-schedule', this);">LUNES</button>
             <button onclick="showSchedule('Mar-schedule', this);">MARTES</button>
@@ -188,6 +187,10 @@
             </div>
             
         </div>
+        <div id="Costo">
+            <span>COSTO:</span>
+            <span id="Precio">S/.15.00</span>
+        </div>
         <div class="buttons" onsubmit="return validarCredenciales()">
             <a href="Home_Cliente.html">Regresar</a>
             <style>
@@ -209,6 +212,7 @@
             <button type="button" class="register-appointment" onclick="registerAppointment()" disabled>Registrar Cita</button>
 
         </div>
+        
     </div>
 
 
@@ -273,21 +277,21 @@
         // Agrega un evento 'change' a cada checkbox
         document.querySelectorAll('.checkbox').forEach(function(checkbox) {
         checkbox.addEventListener('change', toggleRegisterButton);
-        });
+    });
+});
+
+function toggleRegisterButton() {
+    // Encuentra el botón de 'Registrar Cita'
+    var registerButton = document.querySelector('.register-appointment');
+
+    // Revisa si al menos una casilla está marcada
+    var isAnyCheckboxChecked = Array.from(document.querySelectorAll('.checkbox')).some(function(checkbox) {
+        return checkbox.checked;
     });
 
-        function toggleRegisterButton() {
-            // Encuentra el botón de 'Registrar Cita'
-            var registerButton = document.querySelector('.register-appointment');
-
-            // Revisa si al menos una casilla está marcada
-            var isAnyCheckboxChecked = Array.from(document.querySelectorAll('.checkbox')).some(function(checkbox) {
-                return checkbox.checked;
-            });
-
-            // Habilita o deshabilita el botón basado en si alguna casilla está marcada
-            registerButton.disabled = !isAnyCheckboxChecked;
-        }
+    // Habilita o deshabilita el botón basado en si alguna casilla está marcada
+    registerButton.disabled = !isAnyCheckboxChecked;
+}
 
         function registerAppointment() {
             
@@ -297,37 +301,6 @@
             // Asegúrate de que esta función solo se ejecute cuando el formulario sea válido
             // Puedes añadir una verificación de validación del formulario aquí si es necesario
         }
-
-        /*document.addEventListener('DOMContentLoaded', function() {
-            // Obtiene la fecha actual del cliente
-            var today = new Date();
-            var currentDayOfWeek = today.getDay(); // Domingo = 0, Lunes = 1, ..., Sábado = 6
-
-            // Mapea los botones a los días de la semana
-            var daysButtons = document.querySelectorAll('.days button');
-            var daysMapping = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-
-            // Deshabilita los botones de los días que ya han pasado esta semana
-            daysButtons.forEach(function(button, index) {
-                // Index + 1 porque 'daysMapping' comienza en 'Domingo' que es 0 en getDay()
-                if (index + 1 < currentDayOfWeek) {
-                    button.disabled = true;
-                    button.style.backgroundColor = '#CCCCCC'; // Cambia el color de fondo para indicar deshabilitado
-                    button.style.color = '#666666'; // Cambia el color del texto para indicar deshabilitado
-                }
-            });
-
-            // Llama a showSchedule para el primer botón no deshabilitado al cargar la página
-            var firstActiveButton = Array.from(daysButtons).find(button => !button.disabled);
-            if (firstActiveButton) {
-                showSchedule(firstActiveButton.id.replace('-button', '-schedule'), firstActiveButton);
-            }
-        });*/
-
-
-
-
-
     </script>
 </body>
 </html>
